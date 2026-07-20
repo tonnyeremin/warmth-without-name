@@ -1,0 +1,335 @@
+:root {
+  --color-paper:      #f4f0e8;
+  --color-paper-dim:  #ece5d8;
+  --color-ink:        #2f2b26;
+  --color-ink-soft:   #57524a;
+
+  --color-moss:       #8a9a80;
+  --color-clay:       #c9a98c;
+  --color-ash:        #b9b2a6;
+  --color-dusk:       #9a8fa3;
+
+  --color-visited:    #a8a296;
+
+  /* --color-moss darkened toward --color-ink so text/UI set in the moss
+     accent still clears WCAG AA (4.5:1) against --color-paper; the base
+     --color-moss token above is kept verbatim per spec for decorative use.
+     Static hex first as a fallback for browsers without color-mix(). */
+  --color-moss-text: #666e5c;
+  --color-moss-text: color-mix(in srgb, var(--color-moss) 60%, var(--color-ink) 40%);
+  --color-focus-ring: var(--color-moss-text);
+
+  --font-display: "Cormorant", "Noto Serif", serif;
+  --font-body: "EB Garamond", "Noto Serif", Georgia, serif;
+  --font-ui: system-ui, sans-serif;
+
+  --measure: 62ch;
+  --leading-body: 1.75;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-moss);
+  color: var(--color-paper);
+}
+
+a {
+  color: var(--color-moss-text);
+  text-decoration-color: var(--color-moss);
+  text-underline-offset: 0.15em;
+}
+
+.story {
+  min-height: 100vh;
+  padding: clamp(3rem, 10vh, 7rem) clamp(3rem, 14vw, 9rem) clamp(4rem, 14vh, 9rem) clamp(1.25rem, 6vw, 3rem);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.story__text {
+  width: 100%;
+  min-width: 0;
+  max-width: var(--measure);
+}
+
+@media (min-width: 60em) {
+  .story {
+    padding-left: clamp(2rem, 9vw, 6rem);
+  }
+}
+
+.story__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+  color: var(--color-ink);
+  margin: 0 0 0.25em;
+  letter-spacing: 0.01em;
+}
+
+.story__subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  margin: 0 0 clamp(3rem, 8vh, 5rem);
+}
+
+.epigraph {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1vw + 1rem, 1.4rem);
+  color: var(--color-ink-soft);
+  border-left: 1px solid var(--color-ash);
+  padding-left: 1.25em;
+  margin: 0 0 clamp(3.5rem, 10vh, 6rem);
+  max-width: 40ch;
+}
+
+.scene {
+  margin-top: clamp(3rem, 9vh, 6rem);
+}
+
+.scene:first-of-type {
+  margin-top: 0;
+}
+
+.scene__divider {
+  display: block;
+  text-align: left;
+  color: var(--color-ash);
+  font-size: 1rem;
+  letter-spacing: 0.4em;
+  margin: 0 0 clamp(2rem, 6vh, 3.5rem);
+  opacity: 0;
+}
+
+.scene p {
+  margin: 0 0 1.35em;
+}
+
+.scene p:last-child {
+  margin-bottom: 0;
+}
+
+.story__line {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.story__line.is-visible {
+  animation: reveal 550ms ease-out forwards;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.scene__divider.is-visible {
+  animation: reveal-divider 700ms ease-out forwards;
+}
+
+@keyframes reveal-divider {
+  from { opacity: 0; }
+  to   { opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story__line,
+  .scene__divider {
+    opacity: 1;
+    transform: none;
+  }
+  .story__line.is-visible,
+  .scene__divider.is-visible {
+    animation: none;
+  }
+  .scene__divider {
+    opacity: 0.6;
+  }
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.acts-nav {
+  position: fixed;
+  right: clamp(0.75rem, 2vw, 1.5rem);
+  bottom: clamp(0.75rem, 2vw, 1.5rem);
+  display: flex;
+  gap: 0.55em;
+  align-items: center;
+  z-index: 10;
+}
+
+.acts-nav__item {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  transition: color 400ms ease, background-color 400ms ease;
+}
+
+.acts-nav__item--active {
+  color: var(--color-paper);
+  background: var(--color-moss-text);
+}
+
+.acts-nav__item--locked {
+  color: var(--color-ash);
+  cursor: default;
+}
+
+a.acts-nav__item:hover,
+a.acts-nav__item:focus-visible {
+  background: var(--color-paper-dim);
+}
+
+.closing {
+  margin-top: clamp(4rem, 12vh, 7rem);
+  padding-top: clamp(2rem, 6vh, 3.5rem);
+  border-top: 1px solid var(--color-ash);
+}
+
+.closing__note {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--color-ink-soft);
+  margin: 0 0 clamp(2.5rem, 7vh, 4rem);
+}
+
+.subscribe {
+  max-width: 32ch;
+}
+
+.subscribe__label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.75em;
+}
+
+.subscribe__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  transition: opacity 400ms ease;
+}
+
+.subscribe__form.is-fading {
+  opacity: 0;
+}
+
+.subscribe__input {
+  flex: 1 1 14em;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-ink);
+  background: var(--color-paper-dim);
+  border: 1px solid var(--color-ash);
+  border-radius: 3px;
+  padding: 0.65em 0.85em;
+  min-height: 44px;
+}
+
+.subscribe__input::placeholder {
+  color: var(--color-ink-soft);
+  opacity: 0.7;
+}
+
+.subscribe__submit {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+  background: transparent;
+  border: 1px solid var(--color-moss-text);
+  border-radius: 3px;
+  padding: 0.65em 1.1em;
+  min-height: 44px;
+  cursor: pointer;
+  transition: background-color 400ms ease, color 400ms ease;
+}
+
+.subscribe__submit:hover,
+.subscribe__submit:focus-visible {
+  background: var(--color-moss-text);
+  color: var(--color-paper);
+}
+
+.subscribe__confirmation {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
+.subscribe__confirmation.is-visible {
+  opacity: 1;
+}
+
+.telegram {
+  margin-top: clamp(2rem, 6vh, 3rem);
+}
+
+.telegram-link {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-ash);
+  padding-bottom: 0.1em;
+}
+
+.telegram-link[aria-disabled="true"] {
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 40em) {
+  .story {
+    padding-top: 2.5rem;
+    padding-right: clamp(1.25rem, 7vw, 2rem);
+    padding-bottom: 5rem;
+  }
+
+  .epigraph {
+    max-width: none;
+  }
+}

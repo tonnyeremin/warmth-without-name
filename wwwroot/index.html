@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тепло без имени — Акт I</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="story" id="top">
+<main class="story__text">
+  <h1 class="story__title">Тепло без имени</h1>
+  <p class="story__subtitle">Акт I</p>
+
+  <blockquote class="epigraph" id="epigraph"></blockquote>
+
+  <div id="scenes"></div>
+
+  <section class="closing">
+    <p class="closing__note">Конец первого акта. Дальше — тишина, пока не пишутся следующие.</p>
+
+    <div class="subscribe">
+      <form class="subscribe__form" id="subscribe-form">
+        <label class="subscribe__label" for="subscribe-email">Узнать, когда выйдет следующий акт</label>
+        <input class="subscribe__input" id="subscribe-email" type="email" required placeholder="почта">
+        <button class="subscribe__submit" type="submit">Подписаться</button>
+      </form>
+      <p class="subscribe__confirmation" id="subscribe-confirmation" aria-live="polite"></p>
+    </div>
+
+    <p class="telegram">
+      <!-- TODO: replace with real Telegram channel URL -->
+      <span class="telegram-link" aria-disabled="true">Телеграм-канал автора</span>
+    </p>
+  </section>
+</main>
+
+<nav class="acts-nav" id="acts-nav" aria-label="Акты"></nav>
+
+<script src="content/act-one.js"></script>
+<script src="js/acts-config.js"></script>
+<script src="js/acts-nav.js"></script>
+<script src="js/subscribe.js"></script>
+<script src="js/reader.js"></script>
+</body>
+</html>
