@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "warmth-without-name",
+  "compatibility_date": "2026-07-20",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "wwwroot"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
