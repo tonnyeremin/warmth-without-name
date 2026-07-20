@@ -317,11 +317,6 @@ a.acts-nav__item:focus-visible {
   padding-bottom: 0.1em;
 }
 
-.telegram-link[aria-disabled="true"] {
-  cursor: default;
-  pointer-events: none;
-}
-
 @media (max-width: 40em) {
   .story {
     padding-top: 2.5rem;

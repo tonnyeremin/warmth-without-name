@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Тепло без имени — Акт I</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
   <section class="closing">
     <p class="closing__note">Конец первого акта. Дальше — тишина, пока не пишутся следующие.</p>
 
-    <div class="subscribe">
+    <div class="subscribe" hidden>
       <form class="subscribe__form" id="subscribe-form">
         <label class="subscribe__label" for="subscribe-email">Узнать, когда выйдет следующий акт</label>
         <input class="subscribe__input" id="subscribe-email" type="email" required placeholder="почта">
@@ -31,8 +32,7 @@
     </div>
 
     <p class="telegram">
-      <!-- TODO: replace with real Telegram channel URL -->
-      <span class="telegram-link" aria-disabled="true">Телеграм-канал автора</span>
+      <a class="telegram-link" href="https://t.me/cetoniadreams" target="_blank" rel="noopener noreferrer">Телеграм-канал автора</a>
     </p>
   </section>
 </main>
