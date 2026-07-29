@@ -173,7 +173,7 @@
   // again. Purely time-driven (no marks/state to track), so it needs only
   // a "when did something last happen" timestamp updated by every input
   // event, touch-trail or not.
-  var FOG_IDLE_DELAY = 1500;
+  var FOG_IDLE_DELAY = 4500;
   var FOG_MAX_ALPHA = 0.4;
   var FOG_RISE_TAU = 1600;
   var FOG_FALL_TAU = 220;
