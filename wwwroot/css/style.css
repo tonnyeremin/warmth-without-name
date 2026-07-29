@@ -326,6 +326,10 @@ a.acts-nav__item:focus-visible {
   opacity: 1;
 }
 
+.next-act {
+  margin: 0 0 clamp(1.5rem, 4vh, 2rem);
+}
+
 .telegram {
   margin-top: clamp(2rem, 6vh, 3rem);
 }

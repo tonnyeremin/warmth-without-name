@@ -4,7 +4,8 @@
   var DIVIDER_GLYPH = "〜";
 
   function renderStory() {
-    var data = window.ACT_CONTENT && window.ACT_CONTENT["act-one"];
+    var actKey = document.body.getAttribute("data-act") || "act-one";
+    var data = window.ACT_CONTENT && window.ACT_CONTENT[actKey];
     if (!data) {
       return;
     }
